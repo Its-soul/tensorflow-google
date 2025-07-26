@@ -1,3 +1,10 @@
+# Ignore virtual environment
 tf-env/
+
+# Ignore dataset folder
+cats_and_dogs_filtered/
+
+# Ignore Python cache files
 __pycache__/
 *.pyc
+
