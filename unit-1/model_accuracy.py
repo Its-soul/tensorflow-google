@@ -1,9 +1,9 @@
 import os
 import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
-from tensorflow.keras.optimizers import RMSprop
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.models import Sequential # type: ignore
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense # type: ignore
+from tensorflow.keras.optimizers import RMSprop # type: ignore
+from tensorflow.keras.preprocessing.image import ImageDataGenerator # type: ignore
 
 # Base directory where you extracted the dataset
 base_dir = r'C:\Users\vibby\Desktop\coders\Tensorflow\cats_and_dogs_filtered'

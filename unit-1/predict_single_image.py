@@ -1,6 +1,6 @@
 import tensorflow as tf
 import numpy as np
-from tensorflow.keras.preprocessing import image
+from tensorflow.keras.preprocessing import image # type: ignore
 
 # Load the trained model
 model = tf.keras.models.load_model('unit-1/saved_model/my_model.h5')  # Update this if saved elsewhere
