@@ -54,3 +54,6 @@ history = model.fit(
     validation_data=validation_generator,
     validation_steps=5   # You can increase this to len(validation_generator)
 )
+
+# Save the model
+model.save('unit-1/saved_model/my_model.h5')
