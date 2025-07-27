@@ -8,3 +8,5 @@ cats_and_dogs_filtered/
 __pycache__/
 *.pyc
 
+# Ignore saved model files
+*.h5
