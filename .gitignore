@@ -11,5 +11,8 @@ __pycache__/
 # Ignore saved model files
 *.h5
 
-# Ignore the yolov5 model files
-*yolov5s.pt
+# Ignore the yolov5 model weight file
+yolov5s.pt
+
+# Ignore the yolov5 directory
+yolov5/
