@@ -1,4 +1,3 @@
-# simple_object_detector.py
 import torch
 import cv2
 
@@ -13,7 +12,7 @@ WINDOW_NAME = "Object Detection"
 
 # Open webcam
 cap = cv2.VideoCapture(0)
-cv2.namedWindow(WINDOW_NAME)  # Name the window so we can check its property
+cv2.namedWindow(WINDOW_NAME)
 
 while cap.isOpened():
     ret, frame = cap.read()
@@ -27,21 +26,30 @@ while cap.isOpened():
     filtered = results.pandas().xyxy[0]
     filtered = filtered[filtered['name'].isin(target_labels)]
 
-    # Draw boxes
+    # Draw boxes and labels
     for _, row in filtered.iterrows():
-        x1, y1, x2, y2, conf, name = int(row['xmin']), int(row['ymin']), int(row['xmax']), int(row['ymax']), row['confidence'], row['name']
+        x1, y1 = int(row['xmin']), int(row['ymin'])
+        x2, y2 = int(row['xmax']), int(row['ymax'])
+        conf = row['confidence']
+        name = row['name']
+
+        # Draw rectangle
         cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+
+        # Draw label with confidence
+        label = f'{name} {conf:.2f}'
+        cv2.putText(frame, label, (x1, y1 - 10),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+
+    # Show frame
     cv2.imshow(WINDOW_NAME, frame)
 
-    # Break loop if 'q' is pressed or if window is closed
+    # Break on 'q' key press
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-    # If window is closed using X button
+    # Break if window is closed using the X button
     if cv2.getWindowProperty(WINDOW_NAME, cv2.WND_PROP_VISIBLE) < 1:
-        break
-    # If window is closed using X button
-    if cv2.getWindowProperty("Object Detection", cv2.WND_PROP_VISIBLE) < 1:
         break
 
 # Cleanup
