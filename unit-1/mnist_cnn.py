@@ -22,3 +22,8 @@ model = Sequential([
 
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 model.fit(x_train, y_train, epochs=5, validation_data=(x_test, y_test))
+
+# Save model
+# Save model after training
+model.save("mnist_cnn_model.h5")
+print("Model saved as mnist_cnn_model.h5")
